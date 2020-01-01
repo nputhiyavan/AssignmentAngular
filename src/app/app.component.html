@@ -7,13 +7,22 @@
 </div>
 <div class = "container">
   <div class="col-md-6">
-  <input type="text" class="form-control" [(ngModel)] = "userName" />
+  <input type="text" name="user" class="form-control" [(ngModel)] = "userName" />
   {{userName}}
   </div>
   <div>
-    <input type="button" value = "Click" [disabled] = "userName ==''"/>
+    <input type="button" value = "Click" 
+    [disabled] = "userName ==''"
+    (click) = "onCreateServer()"/>
+    {{serverCreationStatus}}
   </div>
-  <app-assignment2></app-assignment2>
+  <p *ngIf="serverCreated; else noServer">Server was Created! Server Name is {{userName}}</p>
+  <ng-template #noServer>
+    <p>No server was created.</p>
+  </ng-template>
+  <app-server></app-server>
+  <app-server></app-server>
+  <!-- <app-assignment2></app-assignment2> -->
   
 </div>
 
